@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @method static self create(array $data)
@@ -24,6 +25,11 @@ class Order extends Model
 
 
      //########################################### Relations ################################################
-
+    public function products():BelongsToMany
+    {
+        return $this->belongsToMany(Product::class)
+            ->withPivot('quantity')
+            ->withTimestamps();
+    }
 
 }

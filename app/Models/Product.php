@@ -20,6 +20,15 @@ class Product extends Model
 
 
      //########################################### Accessors ################################################
+    public function isALLIngredientsAvailable(int $quantity = 1):bool
+    {
+        foreach ($this->ingredients as $ingredient){
+            if (!($ingredient->current_stock >= $ingredient->pivot->quantity *  $quantity ))
+                return false;
+        }
+
+        return true ;
+    }
 
 
      //########################################### Scopes ###################################################
@@ -28,7 +37,9 @@ class Product extends Model
      //########################################### Relations ################################################
     public function ingredients():BelongsToMany
     {
-        return $this->belongsToMany(Ingredient::class,ProductIngredient::class)->withPivot('quantity')->withTimestamps();
+        return $this->belongsToMany(Ingredient::class,'product_ingredient')
+            ->withPivot('quantity')
+            ->withTimestamps();
     }
 
 }
