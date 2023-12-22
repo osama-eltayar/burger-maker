@@ -22,7 +22,7 @@ class StoreOrderService
         });
     }
 
-    private function attachProductsToOrder(Order $order, Collection $orderData)
+    private function attachProductsToOrder(Order $order, Collection $orderData):Order
     {
         $order->products()->attach(
             collect($orderData->get('products'))
