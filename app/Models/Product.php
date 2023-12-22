@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @method static self create(array $data)
@@ -25,6 +26,9 @@ class Product extends Model
 
 
      //########################################### Relations ################################################
-
+    public function ingredients():BelongsToMany
+    {
+        return $this->belongsToMany(Ingredient::class,ProductIngredient::class)->withPivot('quantity')->withTimestamps();
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Merchant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class IngredientFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => 'ingredient',
+            'merchant_id' => Merchant::query()->inRandomOrder()->first('id')->id,
+            'needed_quantity' => 1,
+            'current_quantity' => 1,
         ];
     }
 }
