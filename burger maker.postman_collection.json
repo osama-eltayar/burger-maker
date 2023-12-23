@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "38f60bca-50c8-4953-8fa7-7efd2ed92fc8",
+		"name": "burger maker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20563984"
+	},
+	"item": [
+		{
+			"name": "Save Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "products[0][product_id]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "products[0][quantity]",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://0.0.0.0:80/api/orders",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
