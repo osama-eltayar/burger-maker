@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class BuyBackIngredient extends Notification
+class BuyBackIngredient extends Notification implements ShouldQueue
 {
     use Queueable;
 
