@@ -15,6 +15,11 @@ class OrderController extends Controller
      */
     public function __invoke(StoreOrderRequest $storeOrderRequest,StoreOrderService $storeOrderService)
     {
-        return new SuccessResource(['order' => new OrderResource($storeOrderService->execute(collect($storeOrderRequest->validated()))) ]);
+        return new SuccessResource(
+            [
+                'order' => new OrderResource(
+                    $storeOrderService->execute(collect($storeOrderRequest->validated()))
+                )
+            ],'order created Successfully');
     }
 }

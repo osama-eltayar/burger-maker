@@ -20,8 +20,8 @@ class IngredientFactory extends Factory
         return [
             'name' => 'ingredient',
             'merchant_id' => Merchant::query()->inRandomOrder()->first('id')->id,
-            'needed_quantity' => 1,
-            'current_quantity' => 1,
+            'needed_stock' => 1,
+            'current_stock' => 1,
         ];
     }
 }

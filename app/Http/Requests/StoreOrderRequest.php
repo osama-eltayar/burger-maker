@@ -30,9 +30,17 @@ class StoreOrderRequest extends FormRequest
                 'integer',
                 'distinct',
                 Rule::exists('products','id'),
-                new CheckAvailableIngredients()
             ],
             'products.*.quantity' => ['required','integer','between:1,100']
         ];
+    }
+
+    protected function passedValidation()
+    {
+        $this->validate([
+            'products.*.product_id' => [
+                new CheckAvailableIngredients()
+            ],
+        ]);
     }
 }
